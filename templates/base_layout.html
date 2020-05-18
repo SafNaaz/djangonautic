@@ -9,8 +9,20 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-<div class="wrapper">
+<header class="wrapper">
     <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}"/></a></h1>
+    <nav>
+        <ul>
+            <li>
+                <form action="{% url 'accounts:logout' %}" class="logout-link" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    </header>
+    <div class="wrapper"></div>
     {% block content%}
     {% endblock%}
 </div>
